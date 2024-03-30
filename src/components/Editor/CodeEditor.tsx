@@ -2,21 +2,22 @@ import { useState } from "react";
 import dynamic from "next/dynamic";
 const MonacoEditor = dynamic(import("react-monaco-editor"), { ssr: false });
 
-  
+interface CodeEditorProps {
+  setLeftExpanded: (expanded: boolean) => void;
+  setRightExpanded: (expanded: boolean) => void;
+  leftExpanded: boolean;
+  rightExpanded: boolean;
+}
 
-const CodeEditor = ({setLeftExpanded,setRightExpanded, leftExpanded, rightExpanded}) => {
+const CodeEditor = ({setLeftExpanded ,setRightExpanded, leftExpanded, rightExpanded}: CodeEditorProps) => {
   const [activeTab, setActiveTab] = useState(0);
   const [editorContent, setEditorContent] = useState(['', '', '', '']);
 
-  const handleTabChange = (index) => {
+  const handleTabChange = (index:any) => {
     setActiveTab(index);
   };
 
-  const handleEditorChange = (value, index) => {
-    const newContent = [...editorContent];
-    newContent[index] = value;
-    setEditorContent(newContent);
-  };
+ 
  
 
 
@@ -42,7 +43,7 @@ const CodeEditor = ({setLeftExpanded,setRightExpanded, leftExpanded, rightExpand
      
           <MonacoEditor
             width="100%"
-            height="600"
+            height="400"
             language="javascript"
             theme="vs-dark"
             value=""
