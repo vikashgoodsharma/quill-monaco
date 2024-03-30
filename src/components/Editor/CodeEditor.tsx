@@ -1,30 +1,10 @@
 import { useState } from "react";
 import dynamic from "next/dynamic";
 const MonacoEditor = dynamic(import("react-monaco-editor"), { ssr: false });
-const options = {
-  autoIndent: 'full',
-  contextmenu: true,
-  fontFamily: 'monospace',
-  fontSize: 13,
-  lineHeight: 24,
-  hideCursorInOverviewRuler: true,
-  matchBrackets: 'always',
-  minimap: {
-    enabled: true,
-  },
-  scrollbar: {
-    horizontalSliderSize: 4,
-    verticalSliderSize: 18,
-  },
-  selectOnLineNumbers: true,
-  roundedSelection: false,
-  readOnly: false,
-  cursorStyle: 'line',
-  automaticLayout: true,
-}; 
+
   
 
-const CodeEditor = () => {
+const CodeEditor = ({setLeftExpanded,setRightExpanded, leftExpanded, rightExpanded}) => {
   const [activeTab, setActiveTab] = useState(0);
   const [editorContent, setEditorContent] = useState(['', '', '', '']);
 
@@ -43,47 +23,11 @@ const CodeEditor = () => {
 
   return (
 
-    <div className="w-[60%]">
-    {/* <MonacoEditor
-      editorDidMount={() => {
-        // @ts-ignore
-        window.MonacoEnvironment.getWorkerUrl = (
-          _moduleId: string,
-          label: string
-        ) => {
-          if (label === "json")
-            return "_next/static/json.worker.js";
-          if (label === "css")
-            return "_next/static/css.worker.js";
-          if (label === "html")
-            return "_next/static/html.worker.js";
-          if (
-            label === "typescript" ||
-            label === "javascript"
-          )
-            return "_next/static/ts.worker.js";
-          return "_next/static/editor.worker.js";
-        };
-      }}
-      width="800"
-      height="600"
-      language="markdown"
-      theme="vs-dark"
-      value={postBody}
-      options={{
-        minimap: {
-          enabled: false
-        }
-      }}
-      onChange={setPostBody}
-    /> */}
+    <div className="w-full relative">
+      <img src="/ExpandL.svg" className="absolute -left-4 bottom-0 z-10" onClick={()=>setLeftExpanded(!leftExpanded)}/>
+      <img src="/ExpandR.svg" className="absolute -right-4 bottom-0 z-10" onClick={()=>setRightExpanded(!rightExpanded)}/>
 
-{/*    
-<MonacoEditor
-        height="400"
-        options={options}
-        theme='vs-dark'
-      /> */}
+ 
             <div className="flex bg-[#1E232B]">
         {[0, 1, 2, 3].map((index) => (
           <button
