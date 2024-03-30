@@ -10,10 +10,10 @@ const IssueTypes = ({setSelectedIssueType}) => {
         {ISSUE_LIST.map((issueItem, index)=>{
             return(
                 <div onClick={()=>setSelectedIssueType(issueItem)}  className="bg-[#1E232B] rounded-lg p-2 flex justify-between mt-4" key={index}>
-                <div className="flex gap-4 px-4 border-r-2 border-slate-500 w-[90%]">
+                <div className="flex gap-4 border-r-2 border-slate-500 w-[90%]">
                 <p className="text-[#CCCCCC] ">{issueItem.title}</p>
                 </div>
-                <img src="/Arrow.svg" className="-rotate-90 w-[15px] self-center mr-2"/>   
+                <img src="/Arrow.svg" className="-rotate-90 w-[15px] self-center mx-2"/>   
             </div>
             )
         })}
