@@ -1,4 +1,4 @@
-import EditorArea from "@/components/Editor/EditorArea";
+import EditorArea from "@/components/EditorSection/EditorArea";
 import NavDir from "@/components/NavDir";
 import Navbar from "@/components/Navbar";
 
